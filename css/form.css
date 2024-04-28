@@ -1,0 +1,258 @@
+.textarea {
+  resize: none;
+  height: 112px;
+  min-height: 112px;
+}
+
+.select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.modal__button-close {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: none;
+  right: 30px;
+
+}
+
+.form__wrapper {
+  width: 580px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.form__style {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-template-rows: repeat(5, 60px);
+column-gap: 24px;
+row-gap: 12px;
+width: 580px;
+border: 2px;
+border-radius: 6px;
+border-color: black;
+background-color: #fff;
+padding: 28px;
+margin-bottom: 32px;
+}
+
+.form__group {
+border: 0;
+padding: 0;
+}
+
+.form__group-name {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.form__group-category {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.form__group-unit {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+}
+
+.form__group-discont {
+  grid-column: 1 / 2;
+  grid-row: 4 / 5;
+}
+
+.form__group-description {
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+}
+
+.form__group-count {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+
+.form__group-price {
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
+  margin-bottom: 20px;
+}
+
+
+.form__label {
+  display: block;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.6px;
+  color: #6E6893;
+  text-transform: uppercase;
+  padding-left: 10px;
+  margin-bottom: 5px;
+}
+
+.form__input-item {
+  display: block;
+  background-color: #F2F0F9;
+  border-radius: 6px;
+  min-height: 40px;
+  width: 100%;
+  border: none;
+  padding: 0;
+}
+
+.form__input-item:focus {
+  outline: 3px solid rgba(113, 0, 227, 0.5);;
+}
+
+.form__input-checkbox {
+  position: absolute;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.form__input-checkbox:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-color: #F4F2FF;
+  border-radius: 8px;
+}
+
+.form__input-checkbox:after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 10px;
+  width: 20px;
+  height: 10px;
+  border: 3px solid black;
+  border-top: none;
+  border-right: none;
+  opacity: 0;
+  transform: rotate(-45deg);
+}
+
+.form__input-checkbox:focus-visible {
+  outline: none
+}
+
+.form__input-checkbox:checked:after {
+  opacity: 1
+}
+
+.form__input-checkbox:focus:before {
+  box-shadow: 0px 0px 10px rgba(113, 0, 227, 0.5);
+}
+
+.form__input-checkbox:hover:not(:disabled):before {
+  box-shadow: 0px 0px 10px rgba(0, 113, 227, 0.5);
+}
+
+.form__input-checkbox:disabled:before {
+  background-color: #cccccc;
+}
+
+.form__input-number {
+  background-color: #EEE;
+  border-radius: 6px;
+  width: 100%;
+  max-width: 474px;
+  height: 40px;
+  border: none;
+  float: right;
+}
+
+.form__input-style-block :checked ~ .form__input-number {
+  background-color: #F4F2FF;
+}
+
+.form__button-image-label {
+  padding: 11px 28px;
+  background-color: #6D5BD0;
+  color: #FFFFFF;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 6px;
+  border: none;
+  align-self: center;
+  grid-column: 2 / 3;
+  grid-row: 5 / 6;
+}
+
+.form__button-image-label:hover {
+  padding: 11px 28px;
+  border-radius: 6px;
+  background-color: #EADEED;
+  color: #6D5BD0;
+  text-transform: uppercase;
+  border-radius: 6px;
+  border: none;
+  align-self: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.form__total {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  column-gap: 75px;
+}
+
+.form__total-button {
+  max-width: 200px;
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+  background-color: #6D5BD0;
+  color: #FFFFFF;
+  font-size: 16px;
+  text-transform: uppercase;
+  border-radius: 6px;
+  border: none;
+  padding: 10px 25px;
+}
+
+.form__total-button:hover {
+  padding: 10px 25px;
+  font-size: 16px;
+  background-color: #EADEED;
+  color: #6D5BD0;
+  text-transform: uppercase;
+  border-radius: 6px;
+  border: none;
+  align-self: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.price__summary {
+  display: flex;
+  margin-left: 28px;
+  gap: 3px;
+}
+
+.summary-text {
+  color: #6E6893;
+  font-size: 14px;
+  font-weight: 500;
+  align-self: end;
+}
+
+.summary-number {
+  color: #6D5BD0;
+  font-size: 16px;
+  font-weight: 700;
+}
