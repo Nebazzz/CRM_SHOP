@@ -13,9 +13,9 @@
 
 // 2 урок
 
-const answer_name = prompt('Наименование товара');
-const answer_quantity = +prompt('Количество товара');
-const answer_category = prompt('Категория товара');
-const answer_price = +prompt('Цена товара');
-const summary_product =  answer_quantity * answer_price;
-console.log(`На складе ${answer_quantity} единицы товара ${answer_name} на сумму ${summary_product} деревянных`);
+const answerName = prompt('Наименование товара');
+const answerQuantity = +prompt('Количество товара');
+const answerCategory = prompt('Категория товара');
+const answerPrice = +prompt('Цена товара');
+const summaryProduct =  answerQuantity * answerPrice;
+console.log(`На складе ${answerQuantity} единицы товара ${answerName} на сумму ${summaryProduct} деревянных`);
