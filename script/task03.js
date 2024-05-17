@@ -26,7 +26,7 @@ const calculate = (total, products, promo) => {
       console.log('Больше 10 товаров', sumCart)
     }
     if (sumCart > 30000) {
-      let discontFifteen = (sumCart - 30000) * 20 / 100;
+      let discontFifteen = (sumCart - 30000) * 15 / 100;
       sumCart -= discontFifteen;
       console.log('Сумма больше 30к', sumCart);
     }
