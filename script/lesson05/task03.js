@@ -1,12 +1,12 @@
 'use strict';
 
-const stroke = prompt('Введите текст');
-const strokeReturn = (stroke) => {
-  let newStroke = '';
-  for (let i = stroke.length - 1; i >= 0; i--) {
-    newStroke = newStroke + stroke[i];
+const str = prompt('Введите текст');
+const strokeReturn = (str) => {
+  let newstr = '';
+  for (let i = str.length - 1; i >= 0; i--) {
+    newstr = newstr + str[i];
   }
-  return newStroke;
+  return newstr;
 }
 
-alert(strokeReturn(stroke));
+alert(strokeReturn(str));
