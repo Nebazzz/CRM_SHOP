@@ -43,4 +43,4 @@ const calculate = (total, products, promo) => {
   return sumCart;
 }
 
-console.log(calculate(40000, 20, 'METHED'));
+console.log(calculate(50000, 20, 'G3H2Z1'));
