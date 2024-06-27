@@ -6,8 +6,8 @@ const cart = {
   count: 0, // кол-во товаров
 
   // возвращает сумму всех товаров
-  getTotalPrice() {
-    return this.totalPrice
+  get totalPrice() {
+    return this.calculateItemPrice();
   },
   
   // добавляет товар в корзину
@@ -18,7 +18,6 @@ const cart = {
       price
     }
     this.items.push(item);
-    this.calculateItemPrice();
     this.increaseCount(quantity);
   },
 
@@ -27,17 +26,15 @@ const cart = {
     this.count += quantity;
   },
 
-  // общая сумма товаров
+  // возвращает общую сумму товаров
   calculateItemPrice() {
-    this.totalPrice = this.items.reduce((sum, item) => {
-      return sum + (item.price * item.quantity);
-    }, 0);
+    return this.items.reduce((sum, item) => 
+    sum + (item.price * item.quantity), 0)
   },
 
   // очистка корзины
   clear() {
     this.items = [];
-    this.totalPrice = 0;
     this.count = 0;
   },
 
@@ -50,8 +47,4 @@ const cart = {
 
 cart.add('Носки', 5, 99);
 cart.add('Не носки', 15, 999);
-cart.add('Носки', 5, 99);
-cart.add('Носки', 5, 99);
-cart.add('Носки', 5, 99);
-cart.add('Носки', 5, 99);
 cart.print();
