@@ -18,20 +18,20 @@
 
 const calculate = (total, products, promo) => {
   let sumCart = total;
-  let quantityProduct = products;
-  let amountDiscount = promo; {
+  const quantityProduct = products;
+  const amountDiscount = promo; {
     if (quantityProduct > 10) {
-      let discontThree = sumCart * 3 / 100;
+      const discontThree = sumCart * 3 / 100;
       sumCart -= discontThree;
-      console.log('Больше 10 товаров', sumCart)
+      console.log('Больше 10 товаров', sumCart);
     }
     if (sumCart > 30000) {
-      let discontFifteen = (sumCart - 30000) * 15 / 100;
+      const discontFifteen = (sumCart - 30000) * 15 / 100;
       sumCart -= discontFifteen;
       console.log('Сумма больше 30к', sumCart);
     }
     if (amountDiscount === 'METHED') {
-      let discontTen = sumCart * 10 / 100;
+      const discontTen = sumCart * 10 / 100;
       sumCart -= discontTen;
       console.log('промо METHED', sumCart);
     }
@@ -41,6 +41,6 @@ const calculate = (total, products, promo) => {
     }
   }
   return sumCart;
-}
+};
 
 console.log(calculate(50000, 20, 'G3H2Z1'));

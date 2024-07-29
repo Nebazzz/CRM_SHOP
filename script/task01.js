@@ -13,6 +13,6 @@ const getRuble = (money) => {
   resultMoney *= 73;
   resultMoney *= 1.2;
   return resultMoney;
-}
+};
 
 console.log(getRuble(1000));

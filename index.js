@@ -26,14 +26,14 @@
 const answerName = prompt('Наименование товара');
 const answerQuantity = +prompt('Количество товара');
 if (isNaN(answerQuantity)) {
-  alert("Вы ввели некорректные данные");
+  alert('Вы ввели некорректные данные');
 }
 const answerCategory = prompt('Категория товара');
 const answerPrice = +prompt('Цена товара');
-if(isNaN(answerPrice)) {
-  alert("Вы ввели некорректные данные");
+if (isNaN(answerPrice)) {
+  alert('Вы ввели некорректные данные');
 }
-const summaryProduct =  answerQuantity * answerPrice;
+const summaryProduct = answerQuantity * answerPrice;
 if (!isNaN(answerQuantity && answerPrice)) {
   console.log(`На складе ${answerQuantity} единицы товара ${answerName} на сумму ${summaryProduct} деревянных`);
 }

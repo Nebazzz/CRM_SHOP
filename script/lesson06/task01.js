@@ -4,13 +4,13 @@ const allStudents = ['Иванов', 'Петров', 'Сидоров', 'Кузн
 const failedStudents = ['Сидоров', 'Смирнов', 'Попов'];
 const filter = (allStudents, failedStudents) => {
   const passStudents = [];
-  for (let i = 0; i < allStudents.length; i ++) {
+  for (let i = 0; i < allStudents.length; i++) {
     if (!failedStudents.includes(allStudents[i])) {
       passStudents.push(allStudents[i]);
     }
   }
   return passStudents;
-}
+};
 
 const result = filter(allStudents, failedStudents);
 console.log(`Экзамен сдали: ${result}`);

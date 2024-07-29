@@ -4,7 +4,7 @@
 
 // const autoBrands = ['Audi', 'BMW', 'Mazda', 'Toyota'];
 // console.log(autoBrands); // Выводим массив
-// console.log(autoBrands[1]); // Выводим объект массива через его индекс 
+// console.log(autoBrands[1]); // Выводим объект массива через его индекс
 // console.log(autoBrands.length); // Выводим длинну массива
 
 // ------------ Массивы (МЕТОДЫ) --------------
@@ -20,6 +20,38 @@
 // autoBrands.splice(2, 1); // начинай с индекса 2, удали 1 элемент
 // console.log(autoBrands);
 
+// ------------ Массивы метод деструктуризации --------------
+
+const scientists = ['Mendeleev', 'Aristotel', 'Tesla', 'Curie', 'Darwin'];
+const numbers = [152, 54, 3, 33, 2, 16, 57, 657, 212, 1];
+
+// const [ x, y ] = numbers;  // x - нулевой индекс, y - первый индекс
+// console.log('coord[0]: ', x);
+// console.log('coord[0]: ', y);
+
+// ------------ Массивы метод деструктуризации (rest operator) --------------
+
+const [x, y, ...arr] = numbers; // получаем x и y, затем оставшиеся числа в массиве
+console.log('coord[0]: ', x);
+console.log('coord[1]: ', y);
+console.log('arr: ', arr);
+
+// ------------ Массивы метод деструктуризации (slice метод) --------------
+
+const newArr = numbers.slice(6);
+console.log('newArr: ', newArr);
+
+const str = 'heLLo world!';
+const [a, ...rest] = str;
+console.log(a.toUpperCase() + rest.join('').toLocaleLowerCase());
+
+// ------------ Массивы метод spread (копирование/сливание массива) --------------
+
+const newNumber = [1, 2, 3, ...numbers];
+const newNewNumber = [...newNewNumber, ...numbers];
+console.log('newNumbers: ', newNumber);
+console.log('newNewNumber: ', newNewNumber);
+
 // ------------ Циклы --------------
 
 // for (let i = 0; i < 10; i++) {
@@ -28,7 +60,7 @@
 
 // ------------ Обход массива циклом for --------------
 
-const autoBrands = ['Audi', 'BMW', 'Mazda', 'Toyota'];
+// const autoBrands = ['Audi', 'BMW', 'Mazda', 'Toyota'];
 
 // for (let i = 0; i < autoBrands.length; i++) {
 //   console.log(autoBrands[i]);
@@ -83,7 +115,7 @@ const autoBrands = ['Audi', 'BMW', 'Mazda', 'Toyota'];
 
 // ------------ Методы в Объектах --------------
 
-// const person = { 
+// const person = {
 //   userName: 'Евген',
 //   age: 34,
 //   isMarried: true,
@@ -96,14 +128,14 @@ const autoBrands = ['Audi', 'BMW', 'Mazda', 'Toyota'];
 
 // ------------ Ключевое слово this --------------
 
-// const person = { 
-//   userName: 'Евген',
-//   age: 34,
-//   isMarried: true,
-//   sayHi: function (name) { 
-//     console.log(`Привет ${name}, меня зовут ${this.userName}!`); // this ссылается на свойство этого объекта
-//   },
-// };
+const person = {
+  userName: 'Евген',
+  age: 34,
+  isMarried: true,
+  sayHi(name) {
+    console.log(`Привет ${name}, меня зовут ${this.userName}!`); // this ссылается на свойство этого объекта
+  },
+};
 
 // person.sayHi('Леха')
 
@@ -114,13 +146,14 @@ const autoBrands = ['Audi', 'BMW', 'Mazda', 'Toyota'];
 //   console.log(key, ':', person[key]);
 // }
 
+
 // ------------ Конструкторы объектов --------------
 
-// const person = { 
+// const person = {
 //   userName: 'Евген',
 //   age: 34,
 //   isMarried: true,
-//   sayHi: function (name) { 
+//   sayHi: function (name) {
 //     console.log(`Привет ${name}, меня зовут ${this.userName}!`); // this ссылается на свойство этого объекта
 //   },
 // };
@@ -140,7 +173,7 @@ const autoBrands = ['Audi', 'BMW', 'Mazda', 'Toyota'];
 // console.log(person1);
 // console.log(person2);
 
-//Напишите функцию конвертер, которая на вход принимает стоимость покупки в евро и выводит результат в рублях
+// Напишите функцию конвертер, которая на вход принимает стоимость покупки в евро и выводит результат в рублях
 
 // 1 евро = 1.2 доллара,
 
@@ -168,7 +201,6 @@ const autoBrands = ['Audi', 'BMW', 'Mazda', 'Toyota'];
 // const userInput = prompt('Введите строку')
 // const result = stringMod(userInput);
 // alert(result);
-
 
 
 // const calculate = (sum, quantity, promo) => {

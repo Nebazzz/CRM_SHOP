@@ -7,11 +7,11 @@
 // Пример:  "привет Мир" => "Привет мир"
 const getStroke = (stroke) => {
   let resultStroke = stroke;
-  let firstLetter = resultStroke.charAt(0);
-  let upperLetter = firstLetter.toUpperCase();
-  let otherLetter = resultStroke.slice(1);
+  const firstLetter = resultStroke.charAt(0);
+  const upperLetter = firstLetter.toUpperCase();
+  const otherLetter = resultStroke.slice(1);
   resultStroke = upperLetter + otherLetter;
   return resultStroke;
-}
+};
 
 console.log(getStroke('привет мир'));

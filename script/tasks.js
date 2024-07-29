@@ -4,10 +4,10 @@
 
 const rain = Math.round(Math.random());
 if (rain === 1) {
-  alert('Пошёл дождь. Возьмите зонт!')
+  alert('Пошёл дождь. Возьмите зонт!');
 }
 if (rain === 0) {
-  alert('Дождя нет!')
+  alert('Дождя нет!');
 }
 console.log(rain);
 

@@ -9,8 +9,8 @@ const getAverageValue = (arr) => {
   }
 
   const averageValue = sum / arr.length;
-  return Math.floor(averageValue)
-}
+  return Math.floor(averageValue);
+};
 
 const averageCash = getAverageValue(allCashbox);
 console.log(`Среднеарифметическое значение: ${averageCash}`);
