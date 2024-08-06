@@ -1,31 +1,48 @@
 'use strict';
 
-const guessNumber = Math.floor(Math.random() * 100 + 1);
+// ================ GAME ==================
 
-const guessNumb = () => {
-  let userNumber = prompt('Введите число от 1 до 100');
+// const guessNumber = Math.floor(Math.random() * 100 + 1);
 
-  if (userNumber === null) {
-    alert('GAME OVER!');
-    return;
-  } else if (userNumber.trim() === '') {
-    alert('GAME OVER!');
-    return;
-  } else if (isNaN(userNumber)) {
-    alert('Введи число!');
-    guessNumb();
+// const guessNumb = () => {
+//   let userNumber = prompt('Введите число от 1 до 100');
+
+//   if (userNumber === null) {
+//     alert('GAME OVER!');
+//     return;
+//   } else if (userNumber.trim() === '') {
+//     alert('GAME OVER!');
+//     return;
+//   } else if (isNaN(userNumber)) {
+//     alert('Введи число!');
+//     guessNumb();
+//   } else {
+//     userNumber = parseInt(userNumber);
+//     if (userNumber > guessNumber) {
+//       alert('Меньше!');
+//       guessNumb();
+//     } else if (userNumber < guessNumber) {
+//       alert('Больше!');
+//       guessNumb();
+//     } else {
+//       alert('Правильно!');
+//     }
+//   }
+// };
+
+// guessNumb();
+
+// ================ Lesson 11 ==================
+
+const getNumber = (arr) => {
+  const randomNumber = Math.floor(Math.random() * 11);
+  arr.push(randomNumber);
+  const summary = arr.reduce((sum, current) => sum + current, 0);
+  if (summary < 50) {
+    return getNumber(arr);
   } else {
-    userNumber = parseInt(userNumber);
-    if (userNumber > guessNumber) {
-      alert('Меньше!');
-      guessNumb();
-    } else if (userNumber < guessNumber) {
-      alert('Больше!');
-      guessNumb();
-    } else {
-      alert('Правильно!');
-    }
+    return arr;
   }
 };
 
-guessNumb();
+console.log(getNumber([]));
