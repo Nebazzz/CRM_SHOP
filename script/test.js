@@ -22,8 +22,8 @@
 
 // ------------ Массивы метод деструктуризации --------------
 
-const scientists = ['Mendeleev', 'Aristotel', 'Tesla', 'Curie', 'Darwin'];
-const numbers = [152, 54, 3, 33, 2, 16, 57, 657, 212, 1];
+// const scientists = ['Mendeleev', 'Aristotel', 'Tesla', 'Curie', 'Darwin'];
+// const numbers = [152, 54, 3, 33, 2, 16, 57, 657, 212, 1];
 
 // const [ x, y ] = numbers;  // x - нулевой индекс, y - первый индекс
 // console.log('coord[0]: ', x);
@@ -31,26 +31,26 @@ const numbers = [152, 54, 3, 33, 2, 16, 57, 657, 212, 1];
 
 // ------------ Массивы метод деструктуризации (rest operator) --------------
 
-const [x, y, ...arr] = numbers; // получаем x и y, затем оставшиеся числа в массиве
-console.log('coord[0]: ', x);
-console.log('coord[1]: ', y);
-console.log('arr: ', arr);
+// const [x, y, ...arr] = numbers; // получаем x и y, затем оставшиеся числа в массиве
+// console.log('coord[0]: ', x);
+// console.log('coord[1]: ', y);
+// console.log('arr: ', arr);
 
-// ------------ Массивы метод деструктуризации (slice метод) --------------
+// // ------------ Массивы метод деструктуризации (slice метод) --------------
 
-const newArr = numbers.slice(6);
-console.log('newArr: ', newArr);
+// const newArr = numbers.slice(6);
+// console.log('newArr: ', newArr);
 
-const str = 'heLLo world!';
-const [a, ...rest] = str;
-console.log(a.toUpperCase() + rest.join('').toLocaleLowerCase());
+// const str = 'heLLo world!';
+// const [a, ...rest] = str;
+// console.log(a.toUpperCase() + rest.join('').toLocaleLowerCase());
 
 // ------------ Массивы метод spread (копирование/сливание массива) --------------
 
-const newNumber = [1, 2, 3, ...numbers];
-const newNewNumber = [...newNewNumber, ...numbers];
-console.log('newNumbers: ', newNumber);
-console.log('newNewNumber: ', newNewNumber);
+// const newNumber = [1, 2, 3, ...numbers];
+// const newNewNumber = [...newNewNumber, ...numbers];
+// console.log('newNumbers: ', newNumber);
+// console.log('newNewNumber: ', newNewNumber);
 
 // ------------ Циклы --------------
 
@@ -128,14 +128,14 @@ console.log('newNewNumber: ', newNewNumber);
 
 // ------------ Ключевое слово this --------------
 
-const person = {
-  userName: 'Евген',
-  age: 34,
-  isMarried: true,
-  sayHi(name) {
-    console.log(`Привет ${name}, меня зовут ${this.userName}!`); // this ссылается на свойство этого объекта
-  },
-};
+// const person = {
+//   userName: 'Евген',
+//   age: 34,
+//   isMarried: true,
+//   sayHi(name) {
+//     console.log(`Привет ${name}, меня зовут ${this.userName}!`); // this ссылается на свойство этого объекта
+//   },
+// };
 
 // person.sayHi('Леха')
 
@@ -252,3 +252,62 @@ const person = {
 // const input = prompt('Введите текст');
 // const reversed = reverseString(input);
 // alert(reversed);
+
+// ------------ Стек функции --------------
+
+// const capitalize = str =>
+//   str[0].toUpperCase() + str.slice(1).toLowerCase();
+
+// const getFullName = ({firstname, surname}) =>
+//   `${capitalize(firstname)} ${capitalize(surname)}`;
+
+// const printFullName = arr => {
+//   arr.forEach(item => void console.log(getFullName(item)));
+// };
+
+// const listPerson = [
+//   {
+//     firstname: 'сергей',
+//     surname: 'попов',
+//   },
+//   {
+//     firstname: 'АЛександр',
+//     surname: 'иванов',
+//   },
+//   {
+//     firstname: 'Олег',
+//     surname: 'ПЕТРОВ',
+//   },
+// ];
+
+// printFullName(listPerson);
+
+// ------------ Стек функциии рекурсия --------------
+
+// const foo = (x) => {
+//   x *= 3;
+//   if (x < 100) {
+//     foo(x);
+//   }
+//   return x;
+// };
+
+// console.log(foo(2));
+
+// const pow = (n, power) => {
+//   if (power === 1) {
+//     return n;
+//   } else {
+//     return pow(n, power - 1) * n;
+//   }
+// };
+
+// const sumTo = (n) => {
+//   if (n === 1) return 1;
+//   return n + sumTo(n - 1);
+// };
+
+// console.log(sumTo(5));
+
+// console.log(pow(2, 2));
+
