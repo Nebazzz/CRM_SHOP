@@ -32,7 +32,7 @@
 
 // guessNumb();
 
-// ================ Lesson 11 ==================
+// ================ Lesson 11.2 ==================
 
 // const getNumber = (arr) => {
 //   const randomNumber = Math.floor(Math.random() * 11);
