@@ -52,7 +52,7 @@ const rectangle = {
   height: 5,
 
 
-set width(value) {
+  set width(value) {
     if (typeof value === 'number') {
       this.width = value;
     } else {
