@@ -8,7 +8,7 @@ const rectangle = {
   height: 5,
 
 
-  set width(value) {
+  set rectangleWidth(value) {
     if (typeof value === 'number') {
       this.width = value;
     } else {
@@ -16,7 +16,7 @@ const rectangle = {
     }
   },
 
-  set height(value) {
+  set rectangleHeight(value) {
     if (typeof value === 'number') {
       this.height = value;
     } else {
@@ -26,12 +26,12 @@ const rectangle = {
 
   get perimeter() {
     const perimeter = 2 * (this.width + this.height);
-    return perimeter + 'см.';
+    return perimeter + ' см.';
   },
 
   get area() {
     const area = this.width * this.height;
-    return area + 'см.';
+    return area + ' см.';
   },
 };
 
