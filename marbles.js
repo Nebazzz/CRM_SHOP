@@ -60,6 +60,13 @@
     while (continueGame) {
       continueGame = playGame();
     }
+
+    const playAgain = confirm('Сыграть еще раз?');
+    if (playAgain) {
+      startGame();
+    } else {
+      alert('Хорошо сыграли!');
+    }
   };
 
   startGame();
