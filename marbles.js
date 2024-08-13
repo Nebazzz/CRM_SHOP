@@ -2,8 +2,8 @@
 
 (() => {
   const startMarbles = 5;
-  let playerMarbles = startMarbles; // Изменяем const на let
-  let computerMarbles = startMarbles; // Изменяем const на let
+  let playerMarbles = startMarbles;
+  let computerMarbles = startMarbles;
 
   const getRandomIntInclusive = (min, max) => {
     min = Math.ceil(min);
