@@ -1,6 +1,7 @@
 'use strict';
 
 (() => {
+  const FIGURES_RUS = ['камень', 'ножницы', 'бумага'];
   const startMarbles = 5;
   let playerMarbles = startMarbles;
   let computerMarbles = startMarbles;
@@ -24,6 +25,17 @@
       return two;
     }
     return five;
+  };
+
+  const checkFigure = (figure, index = 0) => {
+    figure = figure.toLowerCase();
+    if (index >= FIGURES_RUS.length) {
+      return -1;
+    }
+    if (FIGURES_RUS[index].startsWith(figure)) {
+      return index;
+    }
+    return checkFigure(figure, index + 1);
   };
 
   const playerTurn = () => {
@@ -97,8 +109,42 @@
     playerTurn();
   };
 
-  const playGame = () => {
-    playerTurn();
+  const whoIsFirst = () => {
+    const playerInput = prompt('Кто ходит первым? Введите "Камень", "ножницы" или "бумага" : ', '').toLowerCase();
+    const playerFigureIndex = checkFigure(playerInput);
+
+    if (playerFigureIndex === -1) {
+      alert('Неверный ввод. Пожалуйста, выберите камень, ножницы или бумага.');
+      if (confirm('Попробовать снова?')) {
+        return whoIsFirst();
+      } else {
+        return;
+      }
+    }
+
+    const computerFigureIndex = getRandomIntInclusive(0, 2);
+
+    const playerFigure = FIGURES_RUS[playerFigureIndex];
+    const computerFigure = FIGURES_RUS[computerFigureIndex];
+
+    if (
+      (playerFigure === 'камень' && computerFigure === 'ножницы') ||
+      (playerFigure === 'ножницы' && computerFigure === 'бумага') ||
+      (playerFigure === 'бумага' && computerFigure === 'камень')
+    ) {
+      alert(`Компьютер выбрал ${computerFigure}, вы выбрали ${playerFigure}. Вы ходите первым!`);
+      playerTurn();
+    } else if (
+      (computerFigure === 'камень' && playerFigure === 'ножницы') ||
+      (computerFigure === 'ножницы' && playerFigure === 'бумага') ||
+      (computerFigure === 'бумага' && playerFigure === 'камень')
+    ) {
+      alert(`Компьютер выбрал ${computerFigure}, вы выбрали ${playerFigure}. Компьютер ходит первым!`);
+      computerTurn();
+    } else {
+      alert(`Компьютер выбрал ${computerFigure}, вы выбрали ${playerFigure}. Ничья!`);
+      whoIsFirst();
+    }
   };
 
   const startGame = () => {
@@ -106,7 +152,7 @@
     playerMarbles = startMarbles;
     computerMarbles = startMarbles;
 
-    playGame();
+    whoIsFirst();
 
     const playAgain = confirm('Сыграть еще раз?');
     if (playAgain) {
