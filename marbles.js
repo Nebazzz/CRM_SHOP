@@ -3,6 +3,8 @@
 (() => {
   const FIGURES_RUS = ['камень', 'ножницы', 'бумага'];
   const startMarbles = 5;
+  const maxMarbles = 10;
+  const minMarbles = 0;
   let playerMarbles = startMarbles;
   let computerMarbles = startMarbles;
 
@@ -40,6 +42,17 @@
 
   const playerTurn = () => {
     const playerInput = prompt(`Шарики игрока: ${playerMarbles}. Введите, пожалуйста, количество шариков от 1 до ${playerMarbles}`, '');
+
+    if (playerInput === null) {
+      const exitGame = confirm('Выйти из игры?');
+      if (exitGame) {
+        alert('Game over');
+        return;
+      } else {
+        return playerTurn();
+      }
+    }
+
     const playerGuess = parseInt(playerInput);
 
     if (isNaN(playerGuess) ||
@@ -59,10 +72,38 @@
       (computerGuess === 1 && !isPlayerGuessEven)) {
       computerMarbles += playerGuess;
       playerMarbles -= playerGuess;
+
+      if (playerMarbles > maxMarbles) {
+        playerMarbles = maxMarbles;
+      }
+      if (playerMarbles < minMarbles) {
+        playerMarbles = minMarbles;
+      }
+      if (computerMarbles > maxMarbles) {
+        computerMarbles = maxMarbles;
+      }
+      if (computerMarbles < minMarbles) {
+        computerMarbles = minMarbles;
+      }
+
       alert(`Компьютер угадал! У вас: ${playerMarbles} ${getNoun(playerMarbles, 'шарик', 'шарика', 'шариков')}, у компьютера: ${computerMarbles} ${getNoun(computerMarbles, 'шарик', 'шарика', 'шариков')}`);
     } else {
       playerMarbles += playerGuess;
       computerMarbles -= playerGuess;
+
+      if (playerMarbles > maxMarbles) {
+        playerMarbles = maxMarbles;
+      }
+      if (playerMarbles < minMarbles) {
+        playerMarbles = minMarbles;
+      }
+      if (computerMarbles > maxMarbles) {
+        computerMarbles = maxMarbles;
+      }
+      if (computerMarbles < minMarbles) {
+        computerMarbles = minMarbles;
+      }
+
       alert(`Компьютер не угадал! У вас: ${playerMarbles} ${getNoun(playerMarbles, 'шарик', 'шарика', 'шариков')}, у компьютера: ${computerMarbles} ${getNoun(computerMarbles, 'шарик', 'шарика', 'шариков')}`);
     }
 
@@ -89,10 +130,38 @@
       (!playerGuess && !isComputerGuessEven)) {
       playerMarbles += computerGuess;
       computerMarbles -= computerGuess;
+
+      if (playerMarbles > maxMarbles) {
+        playerMarbles = maxMarbles;
+      }
+      if (playerMarbles < minMarbles) {
+        playerMarbles = minMarbles;
+      }
+      if (computerMarbles > maxMarbles) {
+        computerMarbles = maxMarbles;
+      }
+      if (computerMarbles < minMarbles) {
+        computerMarbles = minMarbles;
+      }
+
       alert(`Вы угадали! У вас: ${playerMarbles} ${getNoun(playerMarbles, 'шарик', 'шарика', 'шариков')}, у компьютера: ${computerMarbles} ${getNoun(computerMarbles, 'шарик', 'шарика', 'шариков')}`);
     } else {
       playerMarbles -= computerGuess;
       computerMarbles += computerGuess;
+
+      if (playerMarbles > maxMarbles) {
+        playerMarbles = maxMarbles;
+      }
+      if (playerMarbles < minMarbles) {
+        playerMarbles = minMarbles;
+      }
+      if (computerMarbles > maxMarbles) {
+        computerMarbles = maxMarbles;
+      }
+      if (computerMarbles < minMarbles) {
+        computerMarbles = minMarbles;
+      }
+
       alert(`Вы не угадали! У вас: ${playerMarbles} ${getNoun(playerMarbles, 'шарик', 'шарика', 'шариков')}, у компьютера : ${computerMarbles} ${getNoun(computerMarbles, 'шарик', 'шарика', 'шариков')}`);
     }
 
