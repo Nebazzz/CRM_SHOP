@@ -164,3 +164,7 @@ iframe {
   background-color: #F4F2FF;
   padding: 80px 100px 110px;
 }
+
+tr:not(:last-child) {
+  border-bottom: 1px solid #d9d5ec;
+}

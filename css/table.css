@@ -1,4 +1,6 @@
-
+.table__wrapper {
+  overflow-x: auto
+}
 
 .table {
   border-radius: 8px;
@@ -11,7 +13,6 @@
   gap: 20px;
   justify-content: space-between;
   height: 70px;
-  margin-bottom: 15px;
   background-color: #FFFFFF;
   padding: 15px 20px;
   border-top-left-radius: 6px;
@@ -32,6 +33,11 @@
   border: 1px solid #C6C2DE;
   height: 100%;
   border-radius: 6px;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: 19.36px;
+  text-align: left;
+
 }
 
 .header__search-icon {
@@ -58,6 +64,7 @@
   background-color: #F4F2FF;
   font-size: 12px;
   color: #6E6893;
+  font-family: Inter;
 }
 
 .header__search::placeholder {
@@ -92,7 +99,6 @@
 
 .table__style {
   min-width: 1100px;
-  overflow-x: auto;
   table-layout: fixed;
   border-collapse: collapse;
 }
@@ -136,6 +142,8 @@
   background-color: #F4F2FF;
   text-align: left;
   line-height: 45px;
+  border-top: 1px solid #d9d5ec;
+  border-bottom: 1px solid #d9d5ec;
 }
 
 .style-table__head-th:first-child {
@@ -162,7 +170,7 @@
 }
 
 .style-table__body-td:first-child {
-  padding: 15px 15px 15px 15px;
+  padding-left: 15px;
 }
 
 .td__btn {
