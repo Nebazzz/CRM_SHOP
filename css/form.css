@@ -252,5 +252,39 @@ padding: 0;
 .summary-number {
   color: #6D5BD0;
   font-size: 16px;
-  font-weight: 700;
+}
+
+@media (max-width: 790px) {
+  .form__wrapper {
+    width: 290px;
+    background-color: #fff;
+    border-radius: 10px;
+  }
+
+  .modal__button-close {
+    right: 10px;
+  }
+
+  .form__style {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 290px;
+    border: 2px;
+    border-radius: 6px;
+    border-color: black;
+    background-color: #fff;
+    padding: 5px;
+    margin-bottom: 32px;
+    }
+    
+  .form__total {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form__total-button {
+    align-self: center;
+  }
 }

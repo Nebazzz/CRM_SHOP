@@ -210,7 +210,37 @@
   gap: 6px;
 }
 
+@media (max-width: 980px) {
+  .table__header {
+    display: flex;
+    height: auto;
+    flex-direction: column;
+  }
 
+  .table__header-btn {
+    max-width: 180px;
+  }
+}
 
+@media (max-width: 760px) {
+  .header__wrapper {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
 
+  .header__search {
+    min-width: 320px;
+    width: 100%;
+    height: 40px;
+    display: flex;
+}
+.table {
+  min-width: 350px;
+}
 
+  .table__header-btn {
+    align-self: center;
+  }
+}
