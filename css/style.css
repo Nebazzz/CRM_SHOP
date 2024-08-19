@@ -102,6 +102,10 @@ iframe {
   display: none;
 }
 
+.overlay-visible {
+  display: flex;
+}
+
 .modal {
   position: absolute;
   max-width: 792px;
