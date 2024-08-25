@@ -79,10 +79,10 @@ const updateTableHeaders = (arrGoods) => {
   });
 };
 
-const createRow = (goods) => {
+const createRow = (arrGoods) => {
   const trElement = document.createElement('tr');
 
-  Object.entries(goods).forEach(([key, value]) => {
+  Object.entries(arrGoods).forEach(([key, value]) => {
     const tdElement = document.createElement('td');
     tdElement.textContent = value;
     trElement.appendChild(tdElement);
