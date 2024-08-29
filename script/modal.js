@@ -1,5 +1,6 @@
 'use strict';
 
+const modal = document.querySelector('.modal');
 const modalVisible = document.querySelector('.overlay-visible');
 const modalTitle = document.querySelector('.page__title-text');
 const modalIdName = document.querySelector('.page__title-button-text');
@@ -68,7 +69,7 @@ const arrGoods = [
   },
 ];
 
-const updateTableHeaders = (arrGoods) => {
+const updateTableHeaders = () => {
   const headers = Object.keys(arrGoods[0]);
   const thead = document.querySelector('.style-table__head');
   thead.innerHTML = '';
@@ -91,10 +92,6 @@ const createRow = (arrGoods) => {
 };
 
 const renderGoods = (arrGoods) => {
-  if (modalVisible) {
-    modalVisible.style.display = 'none';
-  }
-
   updateTableHeaders(arrGoods);
 
   const tbodyElement = document.querySelector('.style-table__body');
@@ -103,3 +100,27 @@ const renderGoods = (arrGoods) => {
 };
 
 renderGoods(arrGoods);
+
+const openModalButton = document.querySelector('.table__header-btn');
+  openModalButton.addEventListener('click', () => {
+modalVisible.style.display = 'flex';
+});
+
+const closeModalButton = document.querySelector('.modal__button-close');
+closeModalButton.addEventListener('click', () => {
+  modalVisible.style.display = 'none';
+});
+
+document.addEventListener('mouseup', (e) => {
+  if (!modalVisible.contains(e.target)) {
+    modalVisible.style.display = 'none';
+  }
+});
+
+document.addEventListener('click', (e) => {
+  const isClickInside = e.composedPath().includes(modal) ||
+  e.target === openModalButton;
+  if (!isClickInside) {
+    modalVisible.style.display = 'none';
+  }
+});

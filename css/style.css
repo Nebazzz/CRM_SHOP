@@ -103,7 +103,7 @@ iframe {
 }
 
 .overlay-visible {
-  display: flex;
+  display: none;
 }
 
 .modal {
