@@ -5,10 +5,14 @@ const modalVisible = document.querySelector('.overlay-visible');
 const modalTitle = document.querySelector('.page__title-text');
 const modalIdName = document.querySelector('.page__title-button-text');
 const modalIdButton = document.querySelector('.page__title-button-img');
-const modalForm = document.querySelector('.form');
+const modalForm = document.getElementById('product-window');
 const modalFormCheckbox= document.querySelector('.form__input-checkbox');
-const modalFormInput= document.querySelector('.form__input-number');
+const modalFormInput = document.querySelector('.form__input-number');
+const modalInputNumber = document.querySelector('.input__number');
 const modalSum = document.querySelector('.summary-number');
+const modalCount = modalForm.querySelector('#qty');
+const modalPrice = modalForm.querySelector('#price');
+const modalDiscont = modalForm.querySelector('#discont-numb');
 const tbodyElement = document.querySelector('.style-table__body');
 
 const arrGoods = [
@@ -164,15 +168,16 @@ modalFormCheckbox.addEventListener('change', () => {
   }
 });
 
-modalForm.addEventListener('blur', (e) => {
-  if (e.target.classList.contains('form__input-number') ||
-    e.target.classList.contains('form__input-item')) {
-    const count = parseInt(e.target.value);
-    const price = parseInt(modalForm.querySelector('.form__input-item#price').value);
-    const sum = modalSum;
-    console.log('count:', count);
-    console.log('price:', price);
-    console.log('sum:', sum);
-    sum.textContent = (count * price).toString();
+modalInputNumber.addEventListener('blur', (e) => {
+  console.log('blur: ', e);
+  if (e.target.id === 'qty' || e.target.id === 'price' || e.target.id === 'discont-numb') {
+    const count = parseInt(modalCount.value);
+    const price = parseInt(modalPrice.value);
+    let discont = parseInt(modalDiscont.value);
+    if (isNaN(discont)) {
+      discont = 0;
+    }
+    const sum = (count * price) - discont;
+    modalSum.textContent = sum.toString();
   }
 });
