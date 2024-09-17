@@ -154,3 +154,25 @@ tbodyElement.addEventListener('click', e => {
     e.target.closest('.product').remove();
   }
 });
+
+modalFormCheckbox.addEventListener('change', () => {
+  if (modalFormCheckbox.checked) {
+    modalFormInput.removeAttribute('disabled');
+  } else {
+    modalFormInput.setAttribute('disabled', 'disabled');
+    modalFormInput.value = '';
+  }
+});
+
+modalForm.addEventListener('blur', (e) => {
+  if (e.target.classList.contains('form__input-number') ||
+    e.target.classList.contains('form__input-item')) {
+    const count = parseInt(e.target.value);
+    const price = parseInt(modalForm.querySelector('.form__input-item#price').value);
+    const sum = modalSum;
+    console.log('count:', count);
+    console.log('price:', price);
+    console.log('sum:', sum);
+    sum.textContent = (count * price).toString();
+  }
+});

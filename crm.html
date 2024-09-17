@@ -31,24 +31,23 @@
       <div class="page__line">
       </div>
       <form class="form" action="https://jsonplaceholder.typicode.com/posts" id="product-window" method="post">
-
         <div class="form__wrapper">
           <fieldset class="form__style">
             <fieldset class="form__group form__group-name">
               <label class="form__label">Наименование</label>
-                <input class="form__input-item" type="text" name="name" id="product-title" required>
+              <input class="form__input-item" type="text" name="name" id="product-title" required>
             </fieldset>
-  
-              <fieldset class="form__group form__group-category">
-                <label class="form__label">Категория</label>
-                <select class="select form__input-item" name="Category" id="cat">
-                  <!-- <option value="" label=""></option>
-                  <option value="" label=""></option>
-                  <option value="" label=""></option>
-                  <option value="" label=""></option> -->
-                </select>
-              </fieldset>
-  
+      
+            <fieldset class="form__group form__group-category">
+              <label class="form__label">Категория</label>
+              <select class="select form__input-item" name="Category" id="cat">
+                <!-- <option value="" label=""></option>
+                <option value="" label=""></option>
+                <option value="" label=""></option>
+                <option value="" label=""></option> -->
+              </select>
+            </fieldset>
+      
             <fieldset class="form__group form__group-unit">
               <label class="form__label">Единицы измерения</label>
               <select class="select form__input-item" name="units" id="unit">
@@ -58,47 +57,47 @@
                 <option value="" label=""></option> -->
               </select>
             </fieldset>
-  
+      
             <fieldset class="form__group form__group-discont">
               <label class="form__label">Дисконт</label>
-                <div class="form__input-style-block">
-                  <input class="form__input-checkbox" type="checkbox" name="discont" id="ckeck">
-                  <input class="form__input-number" type="number" name="discont-value" id="discont-numb" disabled>
-                </div>
+              <div class="form__input-style-block">
+                <input class="form__input-checkbox" type="checkbox" name="discont" id="ckeck">
+                <input class="form__input-number" type="number" name="discont-value" id="discont-numb" disabled>
+              </div>
             </fieldset>
-  
+      
             <fieldset class="form__group form__group-description">
               <label class="form__label">Описание</label>
-                <textarea class="textarea form__input-item" name="description" cols="25" rows="3" id="description" required>
-                </textarea>
+              <textarea class="textarea form__input-item" name="description" cols="25" rows="3" id="description" required>
+              </textarea>
             </fieldset>
-  
+      
             <fieldset class="form__group form__group-count">
               <label class="form__label">Количество</label>
-                <input class="form__input-item" type="number" name="count" id="qty" required>
+              <input class="form__input-item" type="number" name="count" id="qty" required>
             </fieldset>
-  
+      
             <fieldset class="form__group form__group-price">
               <label class="form__label">Цена</label>
-                <input class="form__input-item" type="number" name="price" id="price" required>
-              </fieldset>
-              <input class="form__button-image" type="file" id="add_image" hidden>
-              <label for="add_image" class="form__button-image-label">Добавить изображение</label>
+              <input class="form__input-item" type="number" name="price" id="price" required>
             </fieldset>
+      
+            <input class="form__button-image" type="file" id="add_image" hidden>
+            <label for="add_image" class="form__button-image-label">Добавить изображение</label>
+          </fieldset>
+        </div>
+      
+        <div class="form__total">
+          <div class="price__summary summary">
+            <span class="summary-text">Итоговая стоимость:</span>
+            <span class="summary-number"></span>
           </div>
-          <div class="form__total">
-            <div class="price__summary summary">
-              <span class="summary-text">Итоговая стоимость:
-              </span>
-              <span class="summary-number">&#36; 900.00
-              </span>
-            </div>
-            <input class="form__total-button" type="submit" value="Добавить товар">
-          </div>
+          <input class="form__total-button" type="submit" value="Добавить товар">
+        </div>
       </form>
     </div>
-    
   </div>
+
   <div class="container">
     <div class="page__title">
       <h1 class="page__title-text">CMS</h1>
