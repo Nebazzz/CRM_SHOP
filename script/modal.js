@@ -169,7 +169,7 @@ const getTotalPrice = (arrGoods) => {
   return sum;
 };
 
-const formControl = (modalFormCheckbox, modalInputNumber, modalForm, closeModal, getTotalPrice) => {
+const formControl = (modalFormCheckbox, modalInputNumber, modalForm, closeModal) => {
   modalFormCheckbox.addEventListener('change', () => {
     if (modalFormCheckbox.checked) {
       modalFormInput.removeAttribute('disabled');
