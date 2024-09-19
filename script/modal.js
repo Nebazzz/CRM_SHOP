@@ -5,7 +5,7 @@ const modalVisible = document.querySelector('.overlay-visible');
 const openModalButton = document.querySelector('.table__header-btn');
 const closeModalButton = document.querySelector('.modal__button-close');
 const modalForm = document.getElementById('product-window');
-const modalFormCheckbox= document.querySelector('.form__input-checkbox');
+const modalFormCheckbox = document.querySelector('.form__input-checkbox');
 const modalFormInput = document.querySelector('.form__input-number');
 const modalInputNumber = document.querySelector('.input__number');
 const modalSum = document.querySelector('.summary-number');
@@ -127,7 +127,15 @@ const renderGoods = (arrGoods) => {
   });
 };
 
+const updateTotalPrice = (arrGoods, sumPriceElement) => {
+  const sum = arrGoods.reduce((accumulator, item) => accumulator + item.price * item.count, 0);
+  sumPriceElement.textContent = sum;
+  return sum;
+};
+
 renderGoods(arrGoods);
+
+updateTotalPrice(arrGoods, sumPriceElement);
 
 const modalControl = (openModalButton, modalVisible) => {
   const openModal = () => {
@@ -160,16 +168,17 @@ const modalControl = (openModalButton, modalVisible) => {
 
 tbodyElement.addEventListener('click', e => {
   if (e.target.closest('.td__btn-delete')) {
-    e.target.closest('.product').remove();
+    const productElement = e.target.closest('.product');
+    productElement.remove();
+
+    const productIndex = Array.from(tbodyElement.children).indexOf(productElement);
+
+    arrGoods.splice(productIndex, 1);
+    updateTotalPrice(arrGoods, sumPriceElement);
   }
 });
 
-const getTotalPrice = (arrGoods) => {
-  const sum = arrGoods.reduce((a, b) => (a + b.price * b.count), 0);
-  return sum;
-};
-
-const formControl = (modalFormCheckbox, modalInputNumber, modalForm, closeModal) => {
+const formControl = (modalFormCheckbox, modalInputNumber, modalForm, closeModal, getTotalPrice) => {
   modalFormCheckbox.addEventListener('change', () => {
     if (modalFormCheckbox.checked) {
       modalFormInput.removeAttribute('disabled');
@@ -224,10 +233,9 @@ const formControl = (modalFormCheckbox, modalInputNumber, modalForm, closeModal)
 
     modalForm.reset();
     closeModal();
+    updateTotalPrice(arrGoods, sumPriceElement);
   });
 };
 
-const sumPrice = getTotalPrice(arrGoods);
-sumPriceElement.textContent = sumPrice;
 const {closeModal} = modalControl(openModalButton, modalVisible);
-formControl(modalFormCheckbox, modalInputNumber, modalForm, closeModal, getTotalPrice);
+formControl(modalFormCheckbox, modalInputNumber, modalForm, closeModal, updateTotalPrice);
