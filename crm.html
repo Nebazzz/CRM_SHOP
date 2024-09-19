@@ -35,26 +35,22 @@
           <fieldset class="form__style">
             <fieldset class="form__group form__group-name">
               <label class="form__label">Наименование</label>
-              <input class="form__input-item" type="text" name="name" id="product-title" required>
+              <input class="form__input-item" type="text" name="title" id="product-title" required>
             </fieldset>
       
             <fieldset class="form__group form__group-category">
               <label class="form__label">Категория</label>
-              <select class="select form__input-item" name="Category" id="cat">
-                <!-- <option value="" label=""></option>
-                <option value="" label=""></option>
-                <option value="" label=""></option>
-                <option value="" label=""></option> -->
+              <select class="select form__input-item" name="category" id="cat" required>
+                <option selected disabled></option>
+                <option value="Какая-то категория" label="">Какая-то категория</option>
               </select>
             </fieldset>
       
             <fieldset class="form__group form__group-unit">
               <label class="form__label">Единицы измерения</label>
-              <select class="select form__input-item" name="units" id="unit">
-                <!-- <option value="" label=""></option>
-                <option value="" label=""></option>
-                <option value="" label=""></option>
-                <option value="" label=""></option> -->
+              <select class="select form__input-item" name="units" id="unit" required>
+                <option selected disabled></option>
+                <option value="шт." label="">шт.</option>
               </select>
             </fieldset>
       

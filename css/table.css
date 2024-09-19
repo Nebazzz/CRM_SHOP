@@ -173,7 +173,7 @@
   padding-left: 15px;
 }
 
-.td__btn {
+.td__btn .td__btn-delete {
   display: flex;
   width: 20px;
   height: 20px;
@@ -183,6 +183,7 @@
 }
 
 .td__btn-svg {
+  display: inline;
   transition: 0.6s;
 }
 

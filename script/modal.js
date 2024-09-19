@@ -110,7 +110,7 @@ const createRow = (arrGoods) => {
         </button>
       </td>
       <td class="style-table__body-td">
-        <button type="button" class="style-table__body-td-btn td__btn">
+        <button type="button" class="style-table__body-td-btn td__btn-delete">
           <svg class="td__btn-svg" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M7.03125 3.59375H6.875C6.96094 3.59375 7.03125 3.52344 7.03125 3.4375V3.59375H12.9688V3.4375C12.9688 3.52344 13.0391 3.59375 13.125 3.59375H12.9688V5H14.375V3.4375C14.375 2.74805 13.8145 2.1875 13.125 2.1875H6.875C6.18555 2.1875 5.625 2.74805 5.625 3.4375V5H7.03125V3.59375ZM16.875 5H3.125C2.7793 5 2.5 5.2793 2.5 5.625V6.25C2.5 6.33594 2.57031 6.40625 2.65625 6.40625H3.83594L4.31836 16.6211C4.34961 17.2871 4.90039 17.8125 5.56641 17.8125H14.4336C15.1016 17.8125 15.6504 17.2891 15.6816 16.6211L16.1641 6.40625H17.3438C17.4297 6.40625 17.5 6.33594 17.5 6.25V5.625C17.5 5.2793 17.2207 5 16.875 5ZM14.2832 16.4062H5.7168L5.24414 6.40625H14.7559L14.2832 16.4062Z" fill="#6E6893"/>
             </svg>
@@ -154,30 +154,66 @@ document.addEventListener('click', (e) => {
 });
 
 tbodyElement.addEventListener('click', e => {
-  if (e.target.closest('.td__btn')) {
+  if (e.target.closest('.td__btn-delete')) {
     e.target.closest('.product').remove();
   }
 });
 
-modalFormCheckbox.addEventListener('change', () => {
-  if (modalFormCheckbox.checked) {
-    modalFormInput.removeAttribute('disabled');
-  } else {
-    modalFormInput.setAttribute('disabled', 'disabled');
-    modalFormInput.value = '';
-  }
-});
-
-modalInputNumber.addEventListener('blur', (e) => {
-  console.log('blur: ', e);
-  if (e.target.id === 'qty' || e.target.id === 'price' || e.target.id === 'discont-numb') {
-    const count = parseInt(modalCount.value);
-    const price = parseInt(modalPrice.value);
-    let discont = parseInt(modalDiscont.value);
-    if (isNaN(discont)) {
-      discont = 0;
+const modalControl = (modalFormCheckbox, modalInputNumber, modalForm) => {
+  modalFormCheckbox.addEventListener('change', () => {
+    if (modalFormCheckbox.checked) {
+      modalFormInput.removeAttribute('disabled');
+    } else {
+      modalFormInput.setAttribute('disabled', 'disabled');
+      modalFormInput.value = '';
     }
-    const sum = (count * price) - discont;
-    modalSum.textContent = sum.toString();
-  }
-});
+  });
+
+  modalInputNumber.addEventListener('blur', (e) => {
+    console.log('blur: ', e);
+    if (e.target.id === 'qty' || e.target.id === 'price' || e.target.id === 'discont-numb') {
+      const count = parseInt(modalCount.value);
+      const price = parseInt(modalPrice.value);
+      let discont = parseInt(modalDiscont.value);
+      if (isNaN(discont)) {
+        discont = 0;
+      }
+      const sum = (count * price) - discont;
+      const updatedSum = sum.toString();
+      modalSum.textContent = updatedSum;
+
+      return updatedSum;
+    }
+  });
+
+  modalForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const newObject = Object.fromEntries(formData);
+
+    const newProduct = {
+      id: '',
+      title: newObject.title,
+      price: newObject.price,
+      description: newObject.description || '',
+      category: newObject.category,
+      discont: newObject.discont,
+      count: newObject.count,
+      units: newObject.units,
+      images: {
+        small: newObject.images_small,
+        big: newObject.images_big,
+      },
+    };
+
+    arrGoods.push(newProduct);
+
+    const newRow = createRow(newProduct);
+    tbodyElement.appendChild(newRow);
+
+    modalForm.reset();
+  });
+};
+
+modalControl(modalFormCheckbox, modalInputNumber, modalForm);
