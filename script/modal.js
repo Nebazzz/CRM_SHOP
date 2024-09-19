@@ -2,9 +2,8 @@
 
 const modal = document.querySelector('.modal');
 const modalVisible = document.querySelector('.overlay-visible');
-const modalTitle = document.querySelector('.page__title-text');
-const modalIdName = document.querySelector('.page__title-button-text');
-const modalIdButton = document.querySelector('.page__title-button-img');
+const openModalButton = document.querySelector('.table__header-btn');
+const closeModalButton = document.querySelector('.modal__button-close');
 const modalForm = document.getElementById('product-window');
 const modalFormCheckbox= document.querySelector('.form__input-checkbox');
 const modalFormInput = document.querySelector('.form__input-number');
@@ -14,6 +13,7 @@ const modalCount = modalForm.querySelector('#qty');
 const modalPrice = modalForm.querySelector('#price');
 const modalDiscont = modalForm.querySelector('#discont-numb');
 const tbodyElement = document.querySelector('.style-table__body');
+const sumPriceElement = document.querySelector('.summary-price');
 
 const arrGoods = [
   {
@@ -129,29 +129,34 @@ const renderGoods = (arrGoods) => {
 
 renderGoods(arrGoods);
 
-const openModalButton = document.querySelector('.table__header-btn');
-  openModalButton.addEventListener('click', () => {
-  modalVisible.style.display = 'flex';
-});
+const modalControl = (openModalButton, modalVisible) => {
+  const openModal = () => {
+    modalVisible.style.display = 'flex';
+  };
 
-const closeModalButton = document.querySelector('.modal__button-close');
-closeModalButton.addEventListener('click', () => {
-  modalVisible.style.display = 'none';
-});
-
-document.addEventListener('mouseup', (e) => {
-  if (!modalVisible.contains(e.target)) {
+  const closeModal = () => {
     modalVisible.style.display = 'none';
-  }
-});
+  };
 
-document.addEventListener('click', (e) => {
-  const isClickInside = e.composedPath().includes(modal) ||
-  e.target === openModalButton;
-  if (!isClickInside) {
-    modalVisible.style.display = 'none';
-  }
-});
+  openModalButton.addEventListener('click', openModal);
+  closeModalButton.addEventListener('click', closeModal);
+
+  modalVisible.addEventListener('mouseup', (e) => {
+    if (!modalVisible.contains(e.target)) {
+      closeModal();
+    }
+  });
+
+  modalVisible.addEventListener('click', (e) => {
+    const isClickInside = e.composedPath().includes(modal) ||
+      e.target === openModalButton;
+    if (!isClickInside) {
+      closeModal();
+    }
+  });
+
+  return { closeModal };
+};
 
 tbodyElement.addEventListener('click', e => {
   if (e.target.closest('.td__btn-delete')) {
@@ -159,7 +164,12 @@ tbodyElement.addEventListener('click', e => {
   }
 });
 
-const modalControl = (modalFormCheckbox, modalInputNumber, modalForm) => {
+const getTotalPrice = (arrGoods) => {
+  const sum = arrGoods.reduce((a, b) => (a + b.price * b.count), 0);
+  return sum;
+};
+
+const formControl = (modalFormCheckbox, modalInputNumber, modalForm, closeModal, getTotalPrice) => {
   modalFormCheckbox.addEventListener('change', () => {
     if (modalFormCheckbox.checked) {
       modalFormInput.removeAttribute('disabled');
@@ -213,7 +223,11 @@ const modalControl = (modalFormCheckbox, modalInputNumber, modalForm) => {
     tbodyElement.appendChild(newRow);
 
     modalForm.reset();
+    closeModal();
   });
 };
 
-modalControl(modalFormCheckbox, modalInputNumber, modalForm);
+const sumPrice = getTotalPrice(arrGoods);
+sumPriceElement.textContent = sumPrice;
+const {closeModal} = modalControl(openModalButton, modalVisible);
+formControl(modalFormCheckbox, modalInputNumber, modalForm, closeModal, getTotalPrice);
