@@ -178,7 +178,7 @@ tbodyElement.addEventListener('click', e => {
   }
 });
 
-const formControl = (modalFormCheckbox, modalInputNumber, modalForm, closeModal, getTotalPrice) => {
+const formControl = (modalFormCheckbox, modalInputNumber, modalForm, closeModal) => {
   modalFormCheckbox.addEventListener('change', () => {
     if (modalFormCheckbox.checked) {
       modalFormInput.removeAttribute('disabled');
@@ -188,22 +188,30 @@ const formControl = (modalFormCheckbox, modalInputNumber, modalForm, closeModal,
     }
   });
 
-  modalInputNumber.addEventListener('blur', (e) => {
-    console.log('blur: ', e);
-    if (e.target.id === 'qty' || e.target.id === 'price' || e.target.id === 'discont-numb') {
-      const count = parseInt(modalCount.value);
-      const price = parseInt(modalPrice.value);
-      let discont = parseInt(modalDiscont.value);
-      if (isNaN(discont)) {
-        discont = 0;
-      }
+  const updateSum = () => {
+    const count = modalCount.value || 1;
+    const price = modalPrice.value;
+    let discont = modalDiscont.value;
+
+    if (count > 0 && price > 0) {
       const sum = (count * price) - discont;
       const updatedSum = sum.toString();
       modalSum.textContent = updatedSum;
 
       return updatedSum;
+    } else {
+      modalSum.textContent = '0';
+    }
+  };
+
+  modalInputNumber.addEventListener('blur', (e) => {
+    if (e.target.id === 'qty' || e.target.id === 'price' || e.target.id === 'discont-numb') {
+      updateSum();
     }
   });
+
+  modalCount.addEventListener('blur', updateSum);
+  modalPrice.addEventListener('blur', updateSum);
 
   modalForm.addEventListener('submit', e => {
     e.preventDefault();

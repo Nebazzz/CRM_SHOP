@@ -162,7 +162,7 @@
 }
 
 .style-table__body-td {
-  line-height: 60px;
+  padding: 13px 0;
 }
 
 .style-table__body-td:nth-child(n+4) {
