@@ -50,8 +50,10 @@ const createRow = (arrGoods) => {
   return trElement;
 };
 
-export default function renderGoods(arrGoods) {
+const renderGoods = (arrGoods) => {
   arrGoods.map((item) => {
     tbodyElement.appendChild(createRow(item));
   });
 };
+
+export { createRow, renderGoods };

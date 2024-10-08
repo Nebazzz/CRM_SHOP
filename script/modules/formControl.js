@@ -1,6 +1,7 @@
 import arrGoods from './data.js';
 import elements from './elements.js';
 import calculations from './calculations.js';
+import { createRow } from './createElements.js';
 const { updateTotalPrice } = calculations;
 
 const {
@@ -15,12 +16,12 @@ const deleteRow = (tbodyElement, arrGoods, sumPriceElement) => {
   tbodyElement.addEventListener('click', e => {
     if (e.target.closest('.td__btn-delete')) {
       const productElement = e.target.closest('.product');
-      productElement.remove();
-
       const productIndex = Array.from(tbodyElement.children).indexOf(productElement);
 
+      productElement.remove();
+
       arrGoods.splice(productIndex, 1);
-      updateTotalPrice(arrGoods, sumPriceElement);
+      updateTotalPrice();
     }
   });
 };
